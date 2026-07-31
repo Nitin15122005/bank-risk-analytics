@@ -1,23 +1,55 @@
+# -----------------------------
 # Python
+# -----------------------------
 .venv/
-venv/
+**/.venv/
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
+*.so
 *.egg-info/
+.pytest_cache/
+.mypy_cache/
 
-# Environment
+# -----------------------------
+# Environment Variables
+# -----------------------------
 .env
+.env.*
 
+# Keep the example env file
+!.env.example
+
+# -----------------------------
 # VS Code
+# -----------------------------
 .vscode/
 
-# Node
+# -----------------------------
+# Node / Frontend
+# -----------------------------
 node_modules/
-
-# Build
 dist/
 build/
 
-# OS
+# -----------------------------
+# Logs
+# -----------------------------
+*.log
+
+# -----------------------------
+# Operating System
+# -----------------------------
 .DS_Store
 Thumbs.db
+
+# -----------------------------
+# Database
+# -----------------------------
+*.sqlite3
+
+# -----------------------------
+# Alembic
+# -----------------------------
+alembic/versions/*.pyc
