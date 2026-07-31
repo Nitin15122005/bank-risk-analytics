@@ -1,11 +1,11 @@
-from sqlalchemy import Boolean, DateTime, Integer, String
-from sqlalchemy.sql import func
+from sqlalchemy import Boolean, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
+from app.models.base_model import TimestampMixin
 
 
-class User(Base):
+class User(Base, TimestampMixin):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
@@ -32,15 +32,4 @@ class User(Base):
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True,
-    )
-
-    created_at: Mapped[DateTime] = mapped_column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-    )
-
-    updated_at: Mapped[DateTime] = mapped_column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        onupdate=func.now(),
     )
