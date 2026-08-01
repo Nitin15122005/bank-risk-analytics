@@ -1,8 +1,7 @@
+from app.db.database import Base
+from app.models.base_model import TimestampMixin
 from sqlalchemy import Boolean, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
-
-from app.db.base import Base
-from app.models.base_model import TimestampMixin
 
 
 class User(Base, TimestampMixin):

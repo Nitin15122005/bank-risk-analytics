@@ -1,7 +1,6 @@
-from sqlalchemy.orm import Session
-
 from app.models.customer import Customer
-from app.schemas.customer import CustomerCreate, CustomerUpdate
+from app.schemas.customer import CustomerCreate, CustomerUpdate  # noqa: F401
+from sqlalchemy.orm import Session
 
 
 class CustomerRepository:

@@ -1,10 +1,9 @@
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
+from app.core.config import settings
 from jose import jwt
 from pwdlib import PasswordHash
-
-from app.core.config import settings
 
 # Password hasher
 password_hash = PasswordHash.recommended()

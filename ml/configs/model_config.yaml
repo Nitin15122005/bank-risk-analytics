@@ -1,0 +1,68 @@
+# =============================================================================
+# Dataset Configuration
+# =============================================================================
+
+dataset:
+  name: german_credit_data.csv
+  target: Credit Risk
+
+# =============================================================================
+# Train/Test Split
+# =============================================================================
+
+training:
+
+  random_state: 42
+
+  test_size: 0.20
+
+  cv_folds: 5
+
+  evaluation_metric: "f1_score"
+
+# =============================================================================
+# Features
+# =============================================================================
+features:
+
+  numerical:
+    - Age
+    - Job
+    - Credit amount
+    - Duration
+
+  categorical:
+    - Sex
+    - Housing
+    - Saving accounts
+    - Checking account
+    - Purpose
+
+  drop_columns:
+      - "Unnamed: 0"
+
+# =============================================================================
+# Models
+# =============================================================================
+models:
+
+  logistic_regression:
+    enabled: true
+
+  decision_tree:
+    enabled: true
+
+  random_forest:
+    enabled: true
+
+  gradient_boosting:
+    enabled: true
+
+  xgboost:
+    enabled: false
+
+  lightgbm:
+    enabled: false
+
+  catboost:
+    enabled: false

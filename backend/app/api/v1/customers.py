@@ -1,6 +1,3 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-
 from app.api.dependencies import get_current_user
 from app.db.session import get_db
 from app.schemas.customer import (
@@ -9,6 +6,8 @@ from app.schemas.customer import (
     CustomerUpdate,
 )
 from app.services.customer_service import CustomerService
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
 
 router = APIRouter(
     prefix="/customers",
