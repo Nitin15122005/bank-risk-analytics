@@ -95,8 +95,3 @@ ALL_FEATURES = (
     NUMERICAL_FEATURES
     + CATEGORICAL_FEATURES
 )
-
-print("=" * 50)
-print("DROP_COLUMNS:", DROP_COLUMNS)
-print("TYPE:", type(DROP_COLUMNS))
-print("=" * 50)

@@ -36,9 +36,42 @@ class DataSplitter:
 
         logger.info("Splitting dataset...")
 
-        X = dataframe.drop(columns=[TARGET_COLUMN])
+        # -----------------------------------------
+        # Copy dataframe
+        # -----------------------------------------
 
-        y = dataframe[TARGET_COLUMN]
+        df = dataframe.copy()
+
+        # -----------------------------------------
+        # Convert Target
+        #
+        # 1 = Good Customer
+        # 2 = Bad Customer
+        #
+        # Convert to:
+        #
+        # 0 = Good
+        # 1 = Bad
+        # -----------------------------------------
+
+        df[TARGET_COLUMN] = df[TARGET_COLUMN].replace(
+            {
+                1: 0,
+                2: 1,
+            }
+        )
+
+        # -----------------------------------------
+        # Split Features & Target
+        # -----------------------------------------
+
+        X = df.drop(columns=[TARGET_COLUMN])
+
+        y = df[TARGET_COLUMN]
+
+        # -----------------------------------------
+        # Train Test Split
+        # -----------------------------------------
 
         X_train, X_test, y_train, y_test = train_test_split(
             X,

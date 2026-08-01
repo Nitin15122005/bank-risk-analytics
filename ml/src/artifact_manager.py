@@ -9,23 +9,22 @@ Responsible for saving:
 """
 
 import json
+
 import joblib
 import pandas as pd
 
 from src.constants import (
+    FEATURE_COLUMNS_FILE,
     LATEST_MODEL_DIR,
-    MODEL_FILE,
     METADATA_FILE,
     METRICS_FILE,
-    FEATURE_COLUMNS_FILE,
+    MODEL_FILE,
 )
-
-from src.schema import (
-    NUMERICAL_FEATURES,
-    CATEGORICAL_FEATURES,
-)
-
 from src.logger import logger
+from src.schema import (
+    CATEGORICAL_FEATURES,
+    NUMERICAL_FEATURES,
+)
 
 
 class ArtifactManager:

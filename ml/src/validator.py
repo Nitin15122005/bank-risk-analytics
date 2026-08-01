@@ -8,9 +8,9 @@ import pandas as pd
 
 from src.logger import logger
 from src.schema import (
-    TARGET_COLUMN,
-    RAW_NUMERICAL_FEATURES,
     RAW_CATEGORICAL_FEATURES,
+    RAW_NUMERICAL_FEATURES,
+    TARGET_COLUMN,
 )
 
 
