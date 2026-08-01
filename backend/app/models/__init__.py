@@ -10,4 +10,4 @@ __all__ = [
     "Loan",
     "RiskAssessment",
     "User",
-] 
+]

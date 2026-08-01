@@ -32,6 +32,11 @@ class Loan(Base):
         nullable=False,
     )
 
+    purpose: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False,
+    )
+
     loan_amount: Mapped[Decimal] = mapped_column(
         Numeric(15, 2),
         nullable=False,
@@ -58,10 +63,6 @@ class Loan(Base):
         default="Pending",
     )
 
-    risk_score: Mapped[int | None] = mapped_column(
-        Integer,
-        nullable=True,
-    )
 
     approval_status: Mapped[str] = mapped_column(
         String(30),

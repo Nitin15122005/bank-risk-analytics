@@ -1,20 +1,40 @@
 from datetime import date
 from decimal import Decimal
 
+from app.core.enums import (
+    CheckingAccountEnum,
+    EmploymentTypeEnum,
+    HousingEnum,
+    SavingAccountEnum,
+)
 from pydantic import BaseModel, ConfigDict, EmailStr
 
 
-class CustomerCreate(BaseModel):
+class CustomerBase(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
     phone: str
+
     date_of_birth: date
     gender: str
-    employment_type: str
+
+    employment_type: EmploymentTypeEnum
+
+    housing: HousingEnum
+    saving_account: SavingAccountEnum
+    checking_account: CheckingAccountEnum
+
     annual_income: Decimal
+    monthly_expenses: Decimal
+
+    employment_years: int
     credit_score: int
+
     branch_id: int
+
+class CustomerCreate(CustomerBase):
+    pass
 
 
 class CustomerUpdate(BaseModel):
@@ -22,25 +42,28 @@ class CustomerUpdate(BaseModel):
     last_name: str | None = None
     email: EmailStr | None = None
     phone: str | None = None
-    date_of_birth: date | None = None
-    gender: str | None = None
-    employment_type: str | None = None
+
+    employment_type: EmploymentTypeEnum | None = None
+
+    housing: HousingEnum | None = None
+
+    saving_account: SavingAccountEnum | None = None
+
+    checking_account: CheckingAccountEnum | None = None
+
     annual_income: Decimal | None = None
+    monthly_expenses: Decimal | None = None
+
+    employment_years: int | None = None
     credit_score: int | None = None
+
     branch_id: int | None = None
 
 
-class CustomerResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
+class CustomerResponse(CustomerBase):
+    id: int
     customer_id: str
-    first_name: str
-    last_name: str
-    email: EmailStr
-    phone: str
-    date_of_birth: date
-    gender: str
-    employment_type: str
-    annual_income: Decimal
-    credit_score: int
-    branch_id: int
+
+    model_config = ConfigDict(
+        from_attributes=True,
+    )

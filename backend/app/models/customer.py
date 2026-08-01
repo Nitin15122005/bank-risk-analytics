@@ -50,6 +50,18 @@ class Customer(Base):
         String(50)
     )
 
+    housing: Mapped[str] = mapped_column(
+        String(20)
+    )
+
+    saving_account: Mapped[str] = mapped_column(
+        String(30)
+    )
+
+    checking_account: Mapped[str] = mapped_column(
+        String(30)
+    )
+
     annual_income: Mapped[float] = mapped_column(
         Numeric(15, 2)
     )
@@ -79,6 +91,12 @@ class Customer(Base):
 
     loans = relationship(
         "Loan",
+        back_populates="customer",
+        cascade="all, delete-orphan",
+    )
+
+    risk_assessments = relationship(
+        "RiskAssessment",
         back_populates="customer",
         cascade="all, delete-orphan",
     )

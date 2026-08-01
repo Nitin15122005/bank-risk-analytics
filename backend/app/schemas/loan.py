@@ -1,35 +1,40 @@
 from datetime import datetime
 from decimal import Decimal
 
+from app.core.enums import LoanTypeEnum, PurposeEnum
 from pydantic import BaseModel, ConfigDict
 
 
-class LoanCreate(BaseModel):
+class LoanBase(BaseModel):
     customer_id: int
-    loan_type: str
+
+    loan_type: LoanTypeEnum
+    purpose: PurposeEnum
+
     loan_amount: Decimal
     interest_rate: Decimal
+
     tenure_months: int
+
+class LoanCreate(LoanBase):
+    pass
 
 
 class LoanUpdate(BaseModel):
     status: str | None = None
     approval_status: str | None = None
-    risk_score: int | None = None
+    purpose: PurposeEnum | None = None
 
 
-class LoanResponse(BaseModel):
+class LoanResponse(LoanBase):
     id: int
     loan_id: str
-    customer_id: int
-    loan_type: str
-    loan_amount: Decimal
-    interest_rate: Decimal
-    tenure_months: int
+
     emi: Decimal
+
     status: str
     approval_status: str
-    risk_score: int | None
+
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)

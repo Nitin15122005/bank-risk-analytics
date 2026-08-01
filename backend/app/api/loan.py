@@ -1,5 +1,6 @@
 from app.db.session import get_db
 from app.schemas.loan import LoanCreate, LoanResponse, LoanUpdate
+from app.schemas.loan_prediction import LoanPredictionResponse
 from app.services.loan_service import LoanService
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -7,10 +8,11 @@ from sqlalchemy.orm import Session
 router = APIRouter(prefix="/loans", tags=["Loans"])
 
 
-@router.post("/", response_model=LoanResponse)
+@router.post("/", response_model=LoanPredictionResponse)
+@router.post("/", response_model=LoanPredictionResponse)
 def create_loan(
     loan: LoanCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     try:
         return LoanService.create(db, loan)
@@ -23,7 +25,7 @@ def create_loan(
 
 @router.get("/", response_model=list[LoanResponse])
 def get_all_loans(
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     return LoanService.get_all(db)
 
@@ -31,7 +33,7 @@ def get_all_loans(
 @router.get("/{loan_id}", response_model=LoanResponse)
 def get_loan(
     loan_id: str,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     loan = LoanService.get_by_id(db, loan_id)
 
@@ -48,7 +50,7 @@ def get_loan(
 def update_loan(
     loan_id: str,
     data: LoanUpdate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     loan = LoanService.update(
         db,
