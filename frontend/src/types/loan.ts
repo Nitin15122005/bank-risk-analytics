@@ -1,5 +1,4 @@
 export interface loan {
-
     id: number;
 
     loan_id: string;
@@ -10,18 +9,17 @@ export interface loan {
 
     purpose: string;
 
-    loan_amount: string;
+    loan_amount: number;
 
-    interest_rate: string;
+    interest_rate: number;
 
     tenure_months: number;
 
-    emi: string;
+    emi: number;
 
     status: string;
 
     approval_status: string;
 
     created_at: string;
-
 }
