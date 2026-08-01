@@ -23,6 +23,7 @@ type Props = {
 
 const employmentTypes = [
     "Unemployed",
+    "Unskilled",
     "Skilled",
     "Highly Skilled",
 ];
@@ -113,7 +114,6 @@ export default function CustomerDialog({
                         "last_name",
                         "email",
                         "phone",
-                        "date_of_birth",
                         "annual_income",
                         "monthly_expenses",
                         "employment_years",
@@ -133,6 +133,24 @@ export default function CustomerDialog({
                         </Grid>
 
                     ))}
+
+                    <Grid size={{ xs: 12, md: 6 }}>
+
+                        <TextField
+                            fullWidth
+                            type="date"
+                            label="Date of Birth"
+                            name="date_of_birth"
+                            value={form.date_of_birth}
+                            onChange={handleChange}
+                            slotProps={{
+                                inputLabel: {
+                                    shrink: true,
+                                },
+                            }}
+                        />
+
+                    </Grid>
 
                     <Grid size={{ xs: 12, md: 6 }}>
                         <TextField

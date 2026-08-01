@@ -111,11 +111,8 @@ export default function Customers() {
             if (selected) {
 
                 await customerService.update(
-
-                    selected.id,
-
-                    data,
-
+                    selected.customer_id,
+                    data
                 );
 
                 setSnackbar({
@@ -182,7 +179,7 @@ export default function Customers() {
         try {
 
             await customerService.delete(
-                selected.id
+                selected.customer_id
             );
 
             setDeleteOpen(false);

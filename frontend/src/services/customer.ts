@@ -32,12 +32,12 @@ export const customerService = {
     },
 
     async update(
-        id: number,
+        customerId: string,
         data: Partial<customer>
     ): Promise<customer> {
 
         const response = await api.put(
-            `/api/v1/customers/${id}`,
+            `/api/v1/customers/${customerId}`,
             data
         );
 
@@ -45,9 +45,9 @@ export const customerService = {
 
     },
 
-    async delete(id: number): Promise<void> {
+    async delete(customerId: string): Promise<void> {
 
-        await api.delete(`/api/v1/customers/${id}`);
+        await api.delete(`/api/v1/customers/${customerId}`);
 
     },
 

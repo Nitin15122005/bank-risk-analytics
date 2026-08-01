@@ -22,7 +22,7 @@ router = APIRouter(
 )
 def create_customer(
     customer: CustomerCreate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     return CustomerService.create(db, customer)
 
@@ -32,7 +32,7 @@ def create_customer(
     response_model=list[CustomerResponse],
 )
 def get_customers(
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     return CustomerService.get_all(db)
 
@@ -43,7 +43,7 @@ def get_customers(
 )
 def get_customer(
     customer_id: str,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     return CustomerService.get_one(db, customer_id)
 
@@ -55,7 +55,7 @@ def get_customer(
 def update_customer(
     customer_id: str,
     customer: CustomerUpdate,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     return CustomerService.update(
         db,
@@ -67,7 +67,7 @@ def update_customer(
 @router.delete("/{customer_id}")
 def delete_customer(
     customer_id: str,
-    db: Session = Depends(get_db),
+    db: Session = Depends(get_db),  # noqa: B008
 ):
     CustomerService.delete(db, customer_id)
 
